@@ -9,6 +9,7 @@ import concurrent.futures
 parser = argparse.ArgumentParser()
 parser.add_argument('--target', '-t', type=str, help='目标地址', required=True)
 parser.add_argument('--ip_list', '-i', type=str, help='ip查询表', default='cn')
+parser.add_argument('--output', '-o', type=str, help='输出的图片名', default='save')
 parser.add_argument('--process', '-p', type=int, help='最大线程数', default='1')
 arg = parser.parse_args()
 
@@ -66,7 +67,7 @@ def get_largest_download_ip(download_sizes):
     max_ip = max(download_sizes, key=lambda k: download_sizes[k] if download_sizes[k] is not None else -1)
     return max_ip, download_sizes[max_ip]
 
-def download(max_ip, target_url):
+def download(max_ip, target_url, save_img):
     if not max_ip:
         print("No valid IP address found for downloading.")
         return
@@ -85,7 +86,7 @@ def download(max_ip, target_url):
         '-H', 'sec-fetch-mode: no-cors',
         '-H', 'sec-fetch-site: cross-site',
         '-H', 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
-        '--compressed', '-o', 'f.jpg'
+        '--compressed', '-o', f'{save_img}.jpg'
     ]
     subprocess.run(curl_command)
 
@@ -95,18 +96,21 @@ def load_ip_list(ip_list_file):
         ip_list_path = os.path.join(working_dir, ip_list_file+'_ip_list.txt')
     else:
         ip_list_path = os.path.join(working_dir, ip_list_file+'_ip_list.txt')
+
     with open(ip_list_path, 'r', encoding='utf-8') as f:
         ip_list = f.read().splitlines()
     return ip_list
 
-def main(target_url, ip_list_file, max_workers):
+def main(target_url, ip_list_file, max_workers, save_img):
     ip_list = load_ip_list(ip_list_file)
     headers = init_header()
     download_sizes = check_download_sizes(ip_list, target_url, headers, max_workers)
     print("Download Sizes:", download_sizes)
+
     max_ip, max_size = get_largest_download_ip(download_sizes)
     print(f"Largest Download IP: {max_ip}, Size: {max_size}")
-    download(max_ip, target_url)
+
+    download(max_ip, target_url, save_img)
 
 
 if __name__ == '__main__':
@@ -114,5 +118,6 @@ if __name__ == '__main__':
     target_url = arg.target
     ip_list_file = arg.ip_list
     max_workers = arg.process
+    save_img = arg.output
     
-    main(target_url, ip_list_file, max_workers)
+    main(target_url, ip_list_file, max_workers, save_img)
