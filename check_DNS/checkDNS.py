@@ -6,7 +6,7 @@ import concurrent.futures
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--host', '-o', type=str, help='指定测试域名', required=True)
+parser.add_argument('--host', '-t', type=str, help='指定测试域名', required=True)
 parser.add_argument('--ip_list', '-i', type=str, help='ip查询表', default='gl')
 arg = parser.parse_args()
 
