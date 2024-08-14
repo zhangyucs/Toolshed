@@ -162,7 +162,6 @@ def main(args=None):
                 success = translate_dir('.', options)
             os.chdir(cwd)
             if success:
-                # case 3 or 4
                 zipdir(tempDir, outputPath)
         except BaseException as e:
             os.chdir(cwd)
