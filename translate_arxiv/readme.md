@@ -1,10 +1,10 @@
-# run:
+__run:__
 
-## arXiv下载及翻译：
+__arXiv下载及翻译：__
   
 python .\translate_arxiv.py \[arxiv_number\]
 
-## latex编译为PDF：
+__latex编译为PDF：__
 
 python .\tex2pdf.py \[arxiv_number\]
 
