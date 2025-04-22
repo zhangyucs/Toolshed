@@ -9,3 +9,5 @@ __anti_ban__: 在CDN搜索被weibo夹的图片（python antiBan.py -t {url} -i {
 __check_DNS__: 检测DNS（python checkDNS.py -t {url} -i {ip_list_file}）
 
 __translate_arxiv__: arXiv论文的下载+翻译+编译（PDF）
+
+__pdf(img)2markdown__: pdf-->img-->markdown（python p2m.py --pdf_dir {pdf_dir}）
