@@ -10,4 +10,4 @@ __check_DNS__: 检测DNS（python checkDNS.py -t {url} -i {ip_list_file}）
 
 __translate_arxiv__: arXiv论文的下载+翻译+编译（PDF）
 
-__pdf(img)2markdown__: pdf-->img-->markdown（python p2m.py --pdf_dir {pdf_dir}）
+__pdf(img)2markdown__: pdf-->img-->markdown by gemini-2.0-flash-exp-image-generation（python p2m.py --pdf_dir {pdf_dir}）
