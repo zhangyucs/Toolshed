@@ -13,7 +13,7 @@ __translate_arxiv__: arXiv论文的下载+翻译+编译（PDF）
 __pdf(img)2markdown__: pdf-->img-->markdown by gemini-2.0-flash-exp-image-generation（python p2m.py --pdf_dir {pdf_dir}）
 
 __gpu_scheduler__: GPU显存监控任务调度器
-'''
+
 python gpu_scheduler.py --help
 
 参数说明:
@@ -33,4 +33,4 @@ python gpu_scheduler.py --help
   --scheduler-log-name  调度器日志文件名 (默认: scheduler)
   
   --create-sample       创建示例配置文件
-'''
+
