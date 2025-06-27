@@ -15,8 +15,10 @@ import math
 load_dotenv(dotenv_path="./API.env")
 API_KEY = os.getenv("GOOGLE_API_KEY")
 
-MODEL_NAME = "gemini-2.0-flash-lite"
-# MODEL_NAME = "ggemini-2.5-flash-lite-preview-06-17"
+MODEL_NAME = "gemini-2.5-flash"
+# MODEL_NAME = "gemini-2.5-flash-lite-preview-06-17"
+# MODEL_NAME = "gemini-2.0-flash"
+# MODEL_NAME = "gemini-2.0-flash-lite"
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent"
 
 def get_image_mime_type(file_path):
